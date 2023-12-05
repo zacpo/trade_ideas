@@ -94,16 +94,15 @@ class App:
 
                     # Debug print
                     #st.write("Processed Data:", df.head())
-
                     # ... [previous code] ...
 
                     fig = go.Figure()
 
-                    # Add line trace for price
-                    fig.add_trace(go.Scatter(x=df.index, y=df['price'], name='Price ($)', mode='lines', yaxis='y1'))
-
                     # Add bar trace for volume on the left y-axis
                     fig.add_trace(go.Bar(x=df.index, y=df['volume'], name='Volume', yaxis='y2'))
+
+                    # Add line trace for price
+                    fig.add_trace(go.Scatter(x=df.index, y=df['price'], name='Price ($)', mode='lines', yaxis='y1'))
 
                     # Layout updates for dual y-axes
                     fig.update_layout(
