@@ -84,14 +84,10 @@ class App:
                     df.sort_values('timestamp', inplace=True)
                     df.set_index('timestamp', inplace=True)
 
-                    # Plotting
                     fig = go.Figure()
-
-                    # Add price trace
                     fig.add_trace(go.Scatter(x=df.index, y=df['price'], name='Price ($)', mode='lines'))
-
-                    # Add volume trace
                     fig.add_trace(go.Bar(x=df.index, y=df['volume'], name='Volume (Native)', yaxis='y2'))
+
 
                     # Layout updates for dual y-axes
                     fig.update_layout(
