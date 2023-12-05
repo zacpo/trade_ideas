@@ -24,11 +24,11 @@ class App:
         # Create a sidebar with tabs
         st.sidebar.header("Tabs")
         selected_tab = st.sidebar.selectbox(
-            "Select a Tab", ("Logic / Overview", "Cryptocurrency Prices", "Lending Protocol Data", "Ethereum Mainnet", "<PLACEHOLDER>")
+            "Select a Tab", ("Overview", "Cryptocurrency Prices", "Lending Protocol Data", "Ethereum Mainnet", "<PLACEHOLDER>")
         )
         
-        if selected_tab == "Logic / Overview":
-            self.tabLogic()
+        if selected_tab == "Overview":
+            self.tabHome()
 
         if selected_tab == "Cryptocurrency Prices":
             self.tabCryptoPrices()
@@ -39,7 +39,7 @@ class App:
         if selected_tab == "<PLACEHOLDER>":
             self.clientTestTab()
     
-def tabLogic(self):
+def tabHome(self):
     st.header("Home")
     markdown_text = """
     Idea: Bridge Tokens
