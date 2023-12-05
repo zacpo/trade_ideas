@@ -408,11 +408,14 @@ class App:
                             use_container_width=True,
                         )
                     
-                    # Fetch data for the third chart using fetchMultiLine1
+                    # Fetch and display data for the TVL chart
                     multi_line_df = self.data_instance.fetchMultiLine1(lending_protocol)
                     st.write("Total Value Locked (TVL) Across Chains:")
-
-                    st.plotly_chart(use_container_width=True)
+                    tvl_fig = px.line(
+                        multi_line_df,
+                        title="Total Value Locked (TVL) Across Chains"
+                    )
+                    st.plotly_chart(tvl_fig, use_container_width=True)
 
                     # Fetch data for the historical TVL chart
                     historical_tvl_df = self.data_instance.historicalChainTvl(lending_protocol)
