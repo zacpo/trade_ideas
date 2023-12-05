@@ -338,8 +338,8 @@ class Data:
 
         return combined_df
 
-    def historicalChainTvl(self, lending_protocol):
-        url = f"https://bridges.llama.fi/bridgevolume/all?id={lending_protocol}"
+    def historicalChainTvl(self, lending_protocol_id):
+        url = f"https://bridges.llama.fi/bridgevolume/all?id={lending_protocol_id}"
 
         try:
             # Fetch data from the URL
