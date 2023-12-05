@@ -28,7 +28,7 @@ class App:
         )
         
         if selected_tab == "Logic / Overview":
-            self.tabHome()
+            self.tabLogic()
 
         if selected_tab == "Cryptocurrency Prices":
             self.tabCryptoPrices()
@@ -39,7 +39,7 @@ class App:
         if selected_tab == "<PLACEHOLDER>":
             self.clientTestTab()
     
-def tabHome(self):
+def tabLogic(self):
     st.header("Home")
     markdown_text = """
     Idea: Bridge Tokens
