@@ -373,7 +373,7 @@ class App:
         ).lower()
 
         st.sidebar.header("Historical Borrowed and Current Borrowed Data")
-        if st.sidebar.button("Fetch Lending Protocol Data"):
+        if st.sidebar.button("Fetch Bridge Data"):
             with st.spinner('Fetching data...'):
                 try:
                     # Existing functionality to fetch and display the first two charts
