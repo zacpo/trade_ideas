@@ -362,27 +362,4 @@ class App:
             unsafe_allow_html=True
         )
 # Trigger App
-App()
-
-# Dune Client Test Tab --------------------------------------------------------------------------------
-    #def clientTestTab(self):
-        #st.sidebar.header("Client Test Parameters")
-        #network = st.sidebar.text_input("Network", value="base")
-        #start = st.sidebar.date_input("Start Date", datetime.date(2023, 10, 1))
-        #end = st.sidebar.date_input("End Date", datetime.date(2023, 10, 31))
-
-        #if st.sidebar.button("Run Client Test"):
-            # Format the dates in YYYY-MM-DD format and append a default time
-            #start_date_formatted = f"{start.strftime('%Y-%m-%d')} 00:00:00"
-            #end_date_formatted = f"{end.strftime('%Y-%m-%d')} 00:00:00"
-
-            # Assuming the clientTest method returns a DataFrame
-            #df = self.data_instance.clientTest(start_date_formatted, 
-                                            #end_date_formatted, 
-                                            #network)
-            # Create a chart using the data
-            #if not df.empty:
-                #fig = px.line(df, x='dt', y='txs')  # Using the correct column names
-                #st.plotly_chart(fig, use_container_width=True)
-            #else:
-                #st.write("No data available for the given parameters.")
+    App()
