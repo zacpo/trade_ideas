@@ -41,9 +41,8 @@ class App:
     
     def tabHome(self):
         st.header("Overview")
+        st.markdown("## Trade Idea: Bridge Tokens")
         markdown_text = """
-        Idea: Bridge Tokens
-        
         **Logic and Observations**
         - Bridge tokens have been among the best performing assets this run.
         - Facilitating the repositioning of funds across chains as the PVP faceoff between narratives has unfolded.
