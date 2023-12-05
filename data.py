@@ -13,8 +13,8 @@ class Data:
 
     def __init__(self):
         self.file_name = 'data.py'
-        self.DUNE_API_KEY = "rbzUnMqFb3ZtFDTJ7MLVXHsYnTavj1dY" # Dune Analytics API Key
-        self.AMBERDATA_API_KEY = "UAK0c028c3100dd891e636c471b40b71c09" # AmberData API Key
+        self.DUNE_API_KEY = "" # Dune Analytics API Key
+        self.AMBERDATA_API_KEY = "" # AmberData API Key
 
 # Prices Tab --------------------------------------------------------------------------------
     def amberPrices(self, start, end, asset, granularity):
