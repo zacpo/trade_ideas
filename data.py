@@ -339,22 +339,26 @@ class Data:
         return combined_df
 
     def historicalChainTvl(self, lending_protocol):
-        # Mapping of protocol names to their respective IDs
-        BRIDGE_MAPPING = {
-            "synapse": 11,
-            "hop": 13,
-            "across": 19,
-            "allbridge": 22,
-            "symbiosis": 27
-        }
+        # Check if the protocol is Thorchain
+        if lending_protocol.lower() == "thorchain":
+            url = "https://api.llama.fi/summary/dexs/thorchain?excludeTotalDataChart=true&excludeTotalDataChartBreakdown=true&dataType=dailyVolume"
+        else:
+            # Mapping of other protocol names to their respective IDs
+            BRIDGE_MAPPING = {
+                "synapse": 11,
+                "hop": 13,
+                "across": 19,
+                "allbridge": 22,
+                "symbiosis": 27
+            }
 
-        # Get the corresponding ID for the selected protocol
-        protocol_id = BRIDGE_MAPPING.get(lending_protocol.lower())
+            # Get the corresponding ID for the selected protocol
+            protocol_id = BRIDGE_MAPPING.get(lending_protocol.lower())
 
-        if protocol_id is None:
-            return None
+            if protocol_id is None:
+                return None
 
-        url = f"https://bridges.llama.fi/bridgevolume/all?id={protocol_id}"
+            url = f"https://bridges.llama.fi/bridgevolume/all?id={protocol_id}"
 
         try:
             response = requests.get(url)
@@ -364,15 +368,23 @@ class Data:
             dates = []
             tvl_sums = []
 
-            # Extract data
-            for entry in data:
-                date = entry.get("date", None)
-                deposit_usd = entry.get("depositUSD", 0)
-                withdraw_usd = entry.get("withdrawUSD", 0)
-
-                if date is not None:
+            # If the protocol is Thorchain, process its specific data structure
+            if lending_protocol.lower() == "thorchain":
+                for entry in data["totalDataChart"]:
+                    date = entry[0]
+                    tvl = entry[1]
                     dates.append(date)
-                    tvl_sums.append(deposit_usd + withdraw_usd)  # Sum of deposit and withdraw USD
+                    tvl_sums.append(tvl)
+            else:
+                # Extract data for other protocols
+                for entry in data:
+                    date = entry.get("date", None)
+                    deposit_usd = entry.get("depositUSD", 0)
+                    withdraw_usd = entry.get("withdrawUSD", 0)
+
+                    if date is not None:
+                        dates.append(date)
+                        tvl_sums.append(deposit_usd + withdraw_usd)  # Sum of deposit and withdraw USD
 
             # Create a DataFrame
             df = pd.DataFrame({
@@ -383,7 +395,7 @@ class Data:
             df = df.sort_values('Date')
 
             return df
-                
+
         except Exception as e:
             st.error(f"Error fetching data: {e}")
             return None
