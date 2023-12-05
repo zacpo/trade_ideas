@@ -106,7 +106,7 @@ class App:
             
         ## Notes
         - Maya Protocol recently launched and is a Thorchain fork. Watch for it to follow RUNE and keep an eye out for other Thorchain forks that may pop up.
-        - Watch bridges for L2s/ EVM chains, Bitcoin, and Solana. People have been moving an [outsized amount of value bto Solana](https://twitter.com/Uptodatenow/status/1729618239905239177) and [Bitcoin liquidity on Thorchain](https://app.thorswap.finance/dashboard) has been mooning.
+        - Watch bridges that connect L2s/ EVM chains, Bitcoin, and Solana. People have been moving an [outsized amount of value to Solana](https://twitter.com/Uptodatenow/status/1729618239905239177) and [Bitcoin liquidity on Thorchain](https://app.thorswap.finance/dashboard) has been mooning.
         - Also watch for watch for a reversal in the current trend of flows into Solana and Bitcoin, this can bring about opportunities around different bridge tokens and within each chain's ecosystem broadly.
         - [Injective Integration w/ Google Cloud](https://medium.com/@bitcoape/injective-and-google-cloud-massive-integration-b2da0f2de199#:~:text=In%20a%20groundbreaking%20move%2C%20Injective,and%20the%20wider%20mainstream%20audience)
         """
