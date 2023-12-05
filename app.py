@@ -19,7 +19,7 @@ class App:
 
     def appSetup(self):
         # Create a Streamlit app
-        st.title("Research Dashboard")
+        st.title("December Trade ideas")
 
         # Create a sidebar with tabs
         st.sidebar.header("Tabs")
@@ -83,9 +83,11 @@ class App:
                     # Remove milliseconds and convert timestamp to datetime
                     df['timestamp'] = pd.to_datetime(df['timestamp'].str.split(' ').str[0], format='%Y-%m-%d', errors='coerce')
 
-                    # Convert 'price' and 'volume' to numeric values
-                    df['price'] = pd.to_numeric(df['price'].str.replace(',', ''), errors='coerce')
-                    df['volume'] = pd.to_numeric(df['volume'].str.replace(',', ''), errors='coerce')
+                    # Check if 'price' and 'volume' are strings and convert them to numeric values
+                    if df['price'].dtype == 'object':
+                        df['price'] = df['price'].str.replace(',', '').astype(float)
+                    if df['volume'].dtype == 'object':
+                        df['volume'] = df['volume'].str.replace(',', '').astype(float)
 
                     # Remove duplicates and sort by timestamp
                     df = df.drop_duplicates(subset='timestamp')
@@ -112,8 +114,6 @@ class App:
                     # ... [CSV export code] ...
 
                 # ... [rest of the method] ...
-
-
 
 
                     # CSV export
