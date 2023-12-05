@@ -24,10 +24,10 @@ class App:
         # Create a sidebar with tabs
         st.sidebar.header("Tabs")
         selected_tab = st.sidebar.selectbox(
-            "Select a Tab", ("Home", "Cryptocurrency Prices", "Lending Protocol Data", "Ethereum Mainnet", "<PLACEHOLDER>")
+            "Select a Tab", ("Logic / Overview", "Cryptocurrency Prices", "Lending Protocol Data", "Ethereum Mainnet", "<PLACEHOLDER>")
         )
         
-        if selected_tab == "Home":
+        if selected_tab == "Logic / Overview":
             self.tabHome()
 
         if selected_tab == "Cryptocurrency Prices":
@@ -39,9 +39,35 @@ class App:
         if selected_tab == "<PLACEHOLDER>":
             self.clientTestTab()
     
-    def tabHome(self):
-        st.header("Home")
-        st.write("This is the home page for our research data app. We can include details on app upgrades, links to our published research reports, and ways of communicating with the team here. Some features of the app we may find beneficial include: 1) technical knowledge free ability to create unlimited CSV files with Dune Data (only costs API request credits), ability to create dashboards that can be used internally without having to share our Dune or related credentials with anyone or making our work on said platforms public, and 3) ability to visualize data from any number of sources side by side (cuts down on the constraints of fragmented data problem for non-technical folks).")
+def tabHome(self):
+    st.header("Home")
+    markdown_text = """
+    Idea: Bridge Tokens
+    
+    Stand Out Tokens:
+    
+    - [**Across Protocol - ACX**](https://defillama.com/protocol/across) ()
+    - [**Axelar - AXL**](https://defillama.com/protocol/axelar) ()
+    - **ChainPort - PORTX** ()
+    - **Hop Protocol - HOP** ()
+    - **Injective - INJ** ()
+    - **Maya Protocol - CACAO** ()
+    - **Symbiosis - SIS** ()
+    - **Synapse - SYN** ()
+    - **Thorchain - RUNE** ()
+    
+    Others to Consider:
+    
+    - **AllBridge - ABR** () - Super volatile recently. Shilled by big CT accounts.
+
+    Some features of the app we may find beneficial include:
+
+    - **Technical Knowledge Free**: Ability to create unlimited CSV files with Dune Data (only costs API request credits).
+    - **Dashboard Creation**: Ability to create dashboards that can be used internally without having to share our Dune or related credentials with anyone or making our work on said platforms public.
+    - **Data Visualization**: Ability to visualize data from any number of sources side by side (cuts down on the constraints of fragmented data problem for non-technical folks).
+    """
+
+    st.markdown(markdown_text)
 
 # Price Tab --------------------------------------------------------------------------------        
     def tabCryptoPrices(self):
