@@ -95,19 +95,31 @@ class App:
                     # Debug print
                     #st.write("Processed Data:", df.head())
 
-                    fig = go.Figure()
-                    fig.add_trace(go.Scatter(x=df.index, y=df['price'], name='Price ($)', mode='lines'))
+                    # ... [previous code] ...
 
-                    # Layout updates
+                    fig = go.Figure()
+
+                    # Add line trace for price
+                    fig.add_trace(go.Scatter(x=df.index, y=df['price'], name='Price ($)', mode='lines', yaxis='y1'))
+
+                    # Add bar trace for volume on the left y-axis
+                    fig.add_trace(go.Bar(x=df.index, y=df['volume'], name='Volume', yaxis='y2'))
+
+                    # Layout updates for dual y-axes
                     fig.update_layout(
-                        title=f"{selected_cryptocurrency.split(' - ')[0]} Prices",
+                        title=f"{selected_cryptocurrency.split(' - ')[0]} Prices and Volume",
                         xaxis=dict(title='Date'),
                         yaxis=dict(title='Price ($)', side='left', showgrid=False),
+                        yaxis2=dict(title='Volume', side='right', overlaying='y', showgrid=False),
                         legend=dict(x=0.01, y=0.99, bordercolor="Black", borderwidth=1)
                     )
 
                     # Display the chart
                     st.plotly_chart(fig, use_container_width=True)
+
+                    # ... [CSV export code] ...
+
+                    # ... [rest of the method] ...
 
                     # CSV export
                     csv_df = df.reset_index()
