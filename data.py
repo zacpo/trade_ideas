@@ -27,7 +27,7 @@ class Data:
         all_prices = []
 
         while start_date < end_date:
-            # Format the startDate for the URL, assuming time is to be set at 01:00:00
+            # Format the startDate for the URL
             start_date_str = start_date.strftime("%Y-%m-%dT01:00:00")
             # The API can only pull one day at a time, so set end date to one day ahead
             end_date_str = (start_date + timedelta(days=1)).strftime("%Y-%m-%dT01:00:00")
@@ -44,8 +44,10 @@ class Data:
             if response.status_code == 200:
                 # Parse the JSON response
                 json_data = response.json()
-                # Extract the price data
-                all_prices.extend(json_data['payload']['data'])
+                # Extract the price data and filter out entries with '0' price
+                for entry in json_data['payload']['data']:
+                    if float(entry.get('price', '0').replace(',', '')) > 0:
+                        all_prices.append(entry)
             else:
                 print(f"Failed to retrieve data for {start_date_str}. Status code: {response.status_code}")
 
@@ -53,6 +55,7 @@ class Data:
             start_date += timedelta(days=1)
 
         return all_prices
+
     
 # Network Tab --------------------------------------------------------------------------------
     # CHART 1 --------------------------------------------------------------------------------
