@@ -40,13 +40,19 @@ class App:
             self.clientTestTab()
     
     def tabHome(self):
-        st.header("Home")
+        st.header("Overview")
         markdown_text = """
         Idea: Bridge Tokens
+        
+        **Logic and Observations**
+        - Bridge tokens have been among the best performing assets this run.
+        - Facilitating the repositioning of funds across chains as the PVP faceoff between narratives has unfolded.
+        - Platforms that bridge to Bitcoin have overperformed (e.g. Maya Protocol and Thorchain)
+        - Charts for all look great. Most have recently retested and beginning to test and break above key MAs. (SYN, INJ, CACAO, HOP look great from this perspective)
             
         Stand Out Tokens:
             
-        - [**Across Protocol - ACX**](https://defillama.com/protocol/across)
+        - [**Across Protocol - ACX**](https://defillama.com/protocol/across)**
             - [*$157.2m FDV*](https://www.coingecko.com/en/coins/across-protocol)
             - $104.63m TVL
             - 1.5 Mcap / TVL Ratio
@@ -71,7 +77,7 @@ class App:
             - $13.64m TVL
             - 11.7 Mcap / TVL Ratio
             
-        - [**Maya Protocol - CACAO**](https://defillama.com/protocol/maya-protocol):
+        - [**Maya Protocol - CACAO**](https://defillama.com/protocol/maya-protocol)**
             - [*$92.68m*](https://www.coingecko.com/en/coins/maya-protocol)
             - $58.94m TVL (*New protocol*)
             - 1.5 Mcap / TVL Ratio
@@ -81,7 +87,7 @@ class App:
             - $3.99m TVL
             - 1.57 Mcap / TVL Ratio
             
-        - [**Synapse - SYN**](https://defillama.com/protocol/synapse)
+        - [**Synapse - SYN**](https://defillama.com/protocol/synapse)**
             - [*$87.1m*](https://www.coingecko.com/en/coins/synapse)
             - $102.89m TVL
             - 0.85 Mcap / TVL Ratio
