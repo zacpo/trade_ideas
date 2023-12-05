@@ -393,7 +393,21 @@ class App:
                         ),
                         use_container_width=True,
                     )
+                        # Create a DataFrame from the protocol data for the bar chart
+                        protocol_df = pd.DataFrame(protocol_data)
 
+                        # Display the bar chart for current borrowed data
+                        st.write("Current Borrowed Assets by Chain:")
+                        st.plotly_chart(
+                            px.bar(
+                                protocol_df,
+                                x="Chain",
+                                y="Borrowed Assets",
+                                title="Current Borrowed Assets by Chain",
+                            ),
+                            use_container_width=True,
+                        )
+                    
                     # Fetch and display data for the TVL chart
                     multi_line_df = self.data_instance.fetchMultiLine1(lending_protocol)
                     st.write("Total Value Locked (TVL) Across Chains:")
