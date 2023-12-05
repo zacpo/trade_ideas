@@ -324,7 +324,7 @@ class Data:
         dfs = []
         for chain, tvl_data in chain_tvls.items():
             # Skip chains with '-borrowed' in the name or equal to 'pool2'
-            if "-borrowed" in chain or chain == 'pool2' or chain == 'staking' or chain == '-staking' or chain == 'thorchain-staking':
+            if "-borrowed" in chain or chain == 'pool2' or chain == 'staking' or chain == '-staking' or chain == 'Thorchain-staking':
                 continue
             
             df = pd.DataFrame(tvl_data['tvl'])
