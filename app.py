@@ -391,7 +391,7 @@ class App:
                     # Fetch and display data for the historical TVL chart
                     historical_tvl_df = self.data_instance.historicalChainTvl(lending_protocol)
                     if historical_tvl_df is not None and not historical_tvl_df.empty:
-                        st.write("Historical Total Value Locked (TVL):")
+                        st.write("Historical Bridge Volume:")
                         historical_tvl_fig = px.line(
                             historical_tvl_df,
                             x="Date",
