@@ -46,17 +46,50 @@ class App:
             
         Stand Out Tokens:
             
-        - [**Across Protocol - ACX**](https://defillama.com/protocol/across):
+        - [**Across Protocol - ACX**](https://defillama.com/protocol/across)
             - [*$157.2m FDV*](https://www.coingecko.com/en/coins/across-protocol)
-            - Amount
-        - [**Axelar - AXL**](https://defillama.com/protocol/axelar): [*$718.3m FDV*](https://www.coingecko.com/en/coins/axelar)
-        - [**ChainPort - PORTX**](https://defillama.com/protocol/chainport): [*$17.9m FDV*](https://www.coingecko.com/en/coins/chainport)
-        - [**Hop Protocol - HOP**](https://defillama.com/protocol/hop-protocol): [*$60.5m FDV*](https://www.coingecko.com/en/coins/hop-protocol)
-        - [**Injective - INJ**](https://defillama.com/protocol/injective-bridge): [*$1.59b FDV*](https://www.coingecko.com/en/coins/injective)
-        - [**Maya Protocol - CACAO**](https://defillama.com/protocol/maya-protocol): [*$92.68m*](https://www.coingecko.com/en/coins/maya-protocol)
-        - [**Symbiosis - SIS**](https://defillama.com/protocol/symbiosis): [*$42.15m*](https://www.coingecko.com/en/coins/symbiosis)
-        - [**Synapse - SYN**](https://defillama.com/protocol/synapse): [*$87.1m*](https://www.coingecko.com/en/coins/synapse)
-        - [**Thorchain - RUNE**](https://defillama.com/protocol/thorchain): [*$3.19b FDV](https://www.coingecko.com/en/coins/thorchain)
+            - $104.63m TVL
+            - 1.5 Mcap / TVL Ratio
+            
+        - [**Axelar - AXL**](https://defillama.com/protocol/axelar):
+            -  [*$718.3m FDV*](https://www.coingecko.com/en/coins/axelar)
+            - $149.89m TVL
+            - 4.79 Mcap / TVL Ratio
+            
+        - [**ChainPort - PORTX**](https://defillama.com/protocol/chainport)
+            - [*$17.9m FDV*](https://www.coingecko.com/en/coins/chainport)
+            - $17.95m TVL
+            - 0.997 Mcap / TVL Ratio
+            
+        - [**Hop Protocol - HOP**](https://defillama.com/protocol/hop-protocol)
+            - [*$60.5m FDV*](https://www.coingecko.com/en/coins/hop-protocol)
+            - $60.41m TVL
+            - 1 Mcap / TVL Ratio
+            
+        - [**Injective - INJ**](https://defillama.com/protocol/injective-bridge)
+            - [*$1.59b FDV*](https://www.coingecko.com/en/coins/injective)
+            - $13.64m TVL
+            - 11.7 Mcap / TVL Ratio
+            
+        - [**Maya Protocol - CACAO**](https://defillama.com/protocol/maya-protocol):
+            - [*$92.68m*](https://www.coingecko.com/en/coins/maya-protocol)
+            - $58.94m TVL (*New protocol*)
+            - 1.5 Mcap / TVL Ratio
+            
+        - [**Symbiosis - SIS**](https://defillama.com/protocol/symbiosis)
+            - [*$42.15m*](https://www.coingecko.com/en/coins/symbiosis)
+            - $3.99m TVL
+            - 1.57 Mcap / TVL Ratio
+            
+        - [**Synapse - SYN**](https://defillama.com/protocol/synapse)
+            - [*$87.1m*](https://www.coingecko.com/en/coins/synapse)
+            - $102.89m TVL
+            - 0.85 Mcap / TVL Ratio
+            
+        - [**Thorchain - RUNE**](https://defillama.com/protocol/thorchain)
+            - [*$3.19b FDV](https://www.coingecko.com/en/coins/thorchain)
+            - $344.27m TVL
+            - 8.78 Mcap / TVL Ratio
             
         Others to Consider:
             
