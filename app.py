@@ -46,7 +46,9 @@ class App:
             
         Stand Out Tokens:
             
-        - [**Across Protocol - ACX**](https://defillama.com/protocol/across): [*$157.2m FDV*](https://www.coingecko.com/en/coins/across-protocol)
+        - [**Across Protocol - ACX**](https://defillama.com/protocol/across):
+            - [*$157.2m FDV*](https://www.coingecko.com/en/coins/across-protocol)
+            - Amount
         - [**Axelar - AXL**](https://defillama.com/protocol/axelar): [*$718.3m FDV*](https://www.coingecko.com/en/coins/axelar)
         - [**ChainPort - PORTX**](https://defillama.com/protocol/chainport): [*$17.9m FDV*](https://www.coingecko.com/en/coins/chainport)
         - [**Hop Protocol - HOP**](https://defillama.com/protocol/hop-protocol): [*$60.5m FDV*](https://www.coingecko.com/en/coins/hop-protocol)
