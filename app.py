@@ -96,15 +96,12 @@ class App:
             - $344.27m TVL
             - 8.78 Mcap / TVL Ratio
             
-        Others to Consider:
-            
-        - **AllBridge - ABR** () - Super volatile recently. Shilled by big CT accounts.
-
-        Some features of the app we may find beneficial include:
-
-        - **Technical Knowledge Free**: Ability to create unlimited CSV files with Dune Data (only costs API request credits).
-        - **Dashboard Creation**: Ability to create dashboards that can be used internally without having to share our Dune or related credentials with anyone or making our work on said platforms public.
-        - **Data Visualization**: Ability to visualize data from any number of sources side by side (cuts down on the constraints of fragmented data problem for non-technical folks).
+        ## Others to Consider:
+        - [**Allbridge - ABR**](https://defillama.com/protocol/allbridge)
+            - [*$60.8 FDV](https://www.coingecko.com/en/coins/allbridge)
+            - $5.1m TVL
+            - 11.92 Mcap / TVL Ratio
+            - Super volatile recently. Shilled by big CT accounts.
         """
         st.markdown(markdown_text)
 
