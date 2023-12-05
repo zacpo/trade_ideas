@@ -84,22 +84,24 @@ class App:
                     df.sort_values('timestamp', inplace=True)
                     df.set_index('timestamp', inplace=True)
 
+                    # ... [previous code] ...
+
                     fig = go.Figure()
                     fig.add_trace(go.Scatter(x=df.index, y=df['price'], name='Price ($)', mode='lines'))
-                    fig.add_trace(go.Bar(x=df.index, y=df['volume'], name='Volume (Native)', yaxis='y2'))
 
-
-                    # Layout updates for dual y-axes
+                    # Layout updates (no need for dual y-axes as volume is not plotted)
                     fig.update_layout(
-                        title=f"{selected_cryptocurrency.split(' - ')[0]} Prices and Volume",
+                        title=f"{selected_cryptocurrency.split(' - ')[0]} Prices",
                         xaxis=dict(title='Date'),
                         yaxis=dict(title='Price ($)', side='left', showgrid=False),
-                        yaxis2=dict(title='Volume (Native)', side='right', overlaying='y', showgrid=False),
                         legend=dict(x=0.01, y=0.99, bordercolor="Black", borderwidth=1)
                     )
 
                     # Display the chart
                     st.plotly_chart(fig, use_container_width=True)
+
+                    # ... [rest of your code for CSV export and warning message] ...
+
 
                     # CSV export
                     csv_df = df.reset_index()
