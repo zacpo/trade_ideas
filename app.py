@@ -366,10 +366,11 @@ class App:
 
 # Category Tab --------------------------------------------------------------------------------
     def tabLendingData(self):
-        lending_protocol = st.sidebar.text_input(
-            "Enter lending protocol (Aave, Compound, Venus, etc.):"
-        )
-        lending_protocol = lending_protocol.lower()
+        # Dropdown for selecting a lending protocol
+        lending_protocols = ["AllBridge", "Symbiosis", "Synapse", "Hop"]
+        lending_protocol = st.sidebar.selectbox(
+            "Select a lending protocol:", lending_protocols
+        ).lower()
 
         st.sidebar.header("Historical Borrowed and Current Borrowed Data")
         if st.sidebar.button("Fetch Lending Protocol Data"):
