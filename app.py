@@ -372,7 +372,7 @@ class App:
             "Select a lending protocol:", lending_protocols
         ).lower()
 
-        st.sidebar.header("Historical Borrowed and Current Borrowed Data")
+        st.sidebar.header("Lending Protocol Data")
         if st.sidebar.button("Fetch Bridge Data"):
             with st.spinner('Fetching data...'):
                 try:
@@ -408,7 +408,7 @@ class App:
                             use_container_width=True,
                         )
                     
-                   # Fetch data for the third chart using fetchMultiLine1
+                    # Fetch data for the third chart using fetchMultiLine1
                     multi_line_df = self.data_instance.fetchMultiLine1(lending_protocol)
                     st.write("Total Value Locked (TVL) Across Chains:")
                     
@@ -431,6 +431,23 @@ class App:
                         )
 
                     st.plotly_chart(fig, use_container_width=True)
+
+                    # Fetch data for the historical TVL chart
+                    historical_tvl_df = self.data_instance.historicalChainTvl(lending_protocol)
+                    if historical_tvl_df is not None and not historical_tvl_df.empty:
+                        st.write("Historical Total Value Locked (TVL):")
+
+                        # Create and display the line chart for historical TVL data
+                        historical_tvl_fig = px.line(
+                            historical_tvl_df,
+                            x="Date",
+                            y="Total TVL USD",
+                            title="Historical Total Value Locked (TVL)"
+                        )
+
+                        st.plotly_chart(historical_tvl_fig, use_container_width=True)
+                    else:
+                        st.error("No historical TVL data available.")
 
                 except Exception as e:
                     st.error(f"Failed to fetch data: {e}")
