@@ -87,7 +87,7 @@ class App:
                     # ... [previous code] ...
 
                     fig = go.Figure()
-                    fig.add_trace(go.Scatter(x=df.index, y=df['priceUSD'], name='Price ($)', mode='lines'))
+                    fig.add_trace(go.Scatter(x=df.index, y=df['price'], name='Price ($)', mode='lines'))
 
                     # Layout updates (no need for dual y-axes as volume is not plotted)
                     fig.update_layout(
