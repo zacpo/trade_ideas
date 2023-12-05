@@ -339,12 +339,27 @@ class Data:
         return combined_df
 
     def historicalChainTvl(self, lending_protocol):
-        url = f"https://bridges.llama.fi/bridgevolume/all?id={lending_protocol}"
+        # Mapping of protocol names to their respective IDs
+        BRIDGE_MAPPING = {
+            "synapse": 11,
+            "hop": 13,
+            "across": 19,
+            "allbridge": 22,
+            "symbiosis": 27
+        }
+
+        # Get the corresponding ID for the selected protocol
+        protocol_id = BRIDGE_MAPPING.get(lending_protocol.lower())
+
+        if protocol_id is None:
+            st.error(f"Invalid lending protocol: {lending_protocol}")
+            return None
+
+        url = f"https://bridges.llama.fi/bridgevolume/all?id={protocol_id}"
 
         try:
-            # Fetch data from the URL
             response = requests.get(url)
-            response.raise_for_status()  # This will raise an exception for HTTP errors
+            response.raise_for_status()
             data = response.json()
 
             dates = []
@@ -366,14 +381,14 @@ class Data:
                 'Total TVL USD': tvl_sums
             })
 
-            # Sort DataFrame by Date
             df = df.sort_values('Date')
 
             return df
-            
+                
         except Exception as e:
             st.error(f"Error fetching data: {e}")
             return None
+
 
 
     def currentChainTvls(self, lending_protocol, data, csv_file=False):
