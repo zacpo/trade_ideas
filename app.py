@@ -376,12 +376,10 @@ class App:
         if st.sidebar.button("Fetch Bridge Data"):
             with st.spinner('Fetching data...'):
                 try:
-                    # Existing functionality to fetch and display the first two charts
+                    # Fetch and display historical borrowed data
                     protocol_data, historical_df = self.data_instance.fetchLendingData(lending_protocol)
                     if protocol_data:
-                        st.success("Data successfully fetched for the first two charts.")
-                        
-                        # Display the line chart for historical borrowed data
+                        st.success("Data successfully fetched for Historical Borrowed Assets.")
                         st.write("Historical Borrowed Assets:")
                         st.plotly_chart(
                             px.line(
@@ -393,50 +391,37 @@ class App:
                             use_container_width=True,
                         )
 
-                        # Create a DataFrame from the protocol data for the bar chart
-                        protocol_df = pd.DataFrame(protocol_data)
-
-                        # Display the bar chart for current borrowed data
-                        st.write("Current Borrowed Assets by Chain:")
-                        st.plotly_chart(
-                            px.bar(
-                                protocol_df,
-                                x="Chain",
-                                y="Borrowed Assets",
-                                title="Current Borrowed Assets by Chain",
-                            ),
-                            use_container_width=True,
-                        )
-                    
-                    # Fetch and display data for the TVL chart
                     multi_line_df = self.data_instance.fetchMultiLine1(lending_protocol)
-                    st.write("Total Value Locked (TVL) Across Chains:")
-                    tvl_fig = px.line(
-                        multi_line_df,
-                        title="Total Value Locked (TVL) Across Chains"
-                    )
-                    st.plotly_chart(tvl_fig, use_container_width=True)
+                    if not multi_line_df.empty:
+                        st.write("Total Value Locked (TVL) Across Chains:")
+                        tvl_fig = px.bar(
+                            multi_line_df,
+                            x='Date',  # Assuming there's a 'Date' column in your DataFrame
+                            y=[col for col in multi_line_df.columns if col != 'Date'],  # List of columns to stack
+                            title="Total Value Locked (TVL) Across Chains",
+                            barmode='stack'
+                        )
+                        st.plotly_chart(tvl_fig, use_container_width=True)
+                    else:
+                        st.error("No TVL data available.")
 
-                    # Fetch data for the historical TVL chart
+                    # Fetch and display data for the historical TVL chart
                     historical_tvl_df = self.data_instance.historicalChainTvl(lending_protocol)
                     if historical_tvl_df is not None and not historical_tvl_df.empty:
                         st.write("Historical Total Value Locked (TVL):")
-
-                        # Create and display the line chart for historical TVL data
                         historical_tvl_fig = px.line(
                             historical_tvl_df,
                             x="Date",
-                            y="Total TVL USD",
-                            title="Historical Total Value Locked (TVL)"
+                            y="Total Volume",
+                            title="Historical Bridge Volume ($)"
                         )
-
                         st.plotly_chart(historical_tvl_fig, use_container_width=True)
                     else:
                         st.error("No historical TVL data available.")
 
                 except Exception as e:
                     st.error(f"Failed to fetch data: {e}")
-            
+
         st.sidebar.markdown(
             'Data: [DeFiLlama](https://defillama.com/)',
             unsafe_allow_html=True
