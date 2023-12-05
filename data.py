@@ -338,38 +338,43 @@ class Data:
 
         return combined_df
 
-    def historicalChainTvl(self, data):
+    def historicalChainTvl(self, lending_protocol_id):
+        url = f"https://bridges.llama.fi/bridgevolume/all?id={lending_protocol_id}"
 
         try:
+            # Fetch data from the URL
+            response = requests.get(url)
+            response.raise_for_status()  # This will raise an exception for HTTP errors
+            data = response.json()
+
             dates = []
-            tvls = []
+            tvl_sums = []
 
-            # Navigate through the nested JSON to get to the 'tvl' list under 'borrowed'
-            borrowed_data = data.get("chainTvls", {}).get("borrowed", {}).get("tvl", [])
-
-            # Populate the date and TVL lists
-            for entry in borrowed_data:
+            # Extract data
+            for entry in data:
                 date = entry.get("date", None)
-                tvl = entry.get("totalLiquidityUSD", None)
-                if date is not None and tvl is not None:
+                deposit_usd = entry.get("depositUSD", 0)
+                withdraw_usd = entry.get("withdrawUSD", 0)
+
+                if date is not None:
                     dates.append(date)
-                    tvls.append(tvl)
+                    tvl_sums.append(deposit_usd + withdraw_usd)  # Sum of deposit and withdraw USD
 
             # Create a DataFrame
             df = pd.DataFrame({
-                'Date': dates,
-                'Tvl': tvls
+                'Date': pd.to_datetime(dates, unit='s'),
+                'Total TVL USD': tvl_sums
             })
 
-            # Format Date Column and Sort DF
-            df['Date'] = pd.to_datetime(df['Date'], unit='s')
+            # Sort DataFrame by Date
             df = df.sort_values('Date')
 
             return df
-        
+            
         except Exception as e:
-            st.error(f"General Error: {e}")
+            st.error(f"Error fetching data: {e}")
             return None
+
 
     def currentChainTvls(self, lending_protocol, data, csv_file=False):
         
