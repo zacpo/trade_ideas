@@ -46,7 +46,10 @@ class Data:
                 json_data = response.json()
                 # Extract the price data and filter out entries with '0' price
                 for entry in json_data['payload']['data']:
-                    if float(entry.get('price', '0').replace(',', '')) > 0:
+                    price = entry.get('price', 0)
+                    if isinstance(price, str):
+                        price = float(price.replace(',', ''))
+                    if price > 0:
                         all_prices.append(entry)
             else:
                 print(f"Failed to retrieve data for {start_date_str}. Status code: {response.status_code}")
@@ -55,7 +58,6 @@ class Data:
             start_date += timedelta(days=1)
 
         return all_prices
-
     
 # Network Tab --------------------------------------------------------------------------------
     # CHART 1 --------------------------------------------------------------------------------
