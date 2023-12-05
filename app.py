@@ -72,11 +72,16 @@ class App:
                     granularity
                 )
 
+                # ... [earlier part of the method] ...
+
                 if not price_data:
                     st.error(f"An error occurred while retrieving data for {selected_cryptocurrency}.")
                 else:
                     # Create DataFrame from fetched data
                     df = pd.DataFrame(price_data)
+
+                    # Debug print
+                    st.write("Raw Data:", df.head())
 
                     # Convert timestamp to datetime and sort
                     df['timestamp'] = pd.to_datetime(df['timestamp'], format='%Y-%m-%d.%H:%M:%S.%f', errors='coerce')
@@ -84,7 +89,8 @@ class App:
                     df.sort_values('timestamp', inplace=True)
                     df.set_index('timestamp', inplace=True)
 
-                    # ... [previous code] ...
+                    # Debug print
+                    st.write("Processed Data:", df.head())
 
                     fig = go.Figure()
                     fig.add_trace(go.Scatter(x=df.index, y=df['price'], name='Price ($)', mode='lines'))
@@ -100,7 +106,10 @@ class App:
                     # Display the chart
                     st.plotly_chart(fig, use_container_width=True)
 
-                    # ... [rest of your code for CSV export and warning message] ...
+                    # ... [CSV export code] ...
+
+                # ... [rest of the method] ...
+
 
 
                     # CSV export
