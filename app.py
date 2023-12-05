@@ -95,7 +95,7 @@ class App:
                     df.set_index('timestamp', inplace=True)
 
                     # Debug print
-                    st.write("Processed Data:", df.head())
+                    #st.write("Processed Data:", df.head())
 
                     fig = go.Figure()
                     fig.add_trace(go.Scatter(x=df.index, y=df['price'], name='Price ($)', mode='lines'))
@@ -110,11 +110,6 @@ class App:
 
                     # Display the chart
                     st.plotly_chart(fig, use_container_width=True)
-
-                    # ... [CSV export code] ...
-
-                # ... [rest of the method] ...
-
 
                     # CSV export
                     csv_df = df.reset_index()
