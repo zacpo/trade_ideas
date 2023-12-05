@@ -376,21 +376,6 @@ class App:
         if st.sidebar.button("Fetch Bridge Data"):
             with st.spinner('Fetching data...'):
                 try:
-                    # Fetch and display historical borrowed data
-                    protocol_data, historical_df = self.data_instance.fetchLendingData(lending_protocol)
-                    if protocol_data:
-                        st.success("Data successfully fetched for Historical Borrowed Assets.")
-                        st.write("Historical Borrowed Assets:")
-                        st.plotly_chart(
-                            px.line(
-                                historical_df,
-                                x="Date",
-                                y="Tvl",
-                                title="Historical Borrowed Assets",
-                            ),
-                            use_container_width=True,
-                        )
-
                     # Fetch and display data for the TVL chart as a stacked bar chart
                     multi_line_df = self.data_instance.fetchMultiLine1(lending_protocol)
                     if not multi_line_df.empty:
@@ -411,7 +396,7 @@ class App:
                         historical_tvl_fig = px.line(
                             historical_tvl_df,
                             x="Date",
-                            y="Total Volume",
+                            y="Total TVL USD",
                             title="Historical Bridge Volume ($)"
                         )
                         st.plotly_chart(historical_tvl_fig, use_container_width=True)
