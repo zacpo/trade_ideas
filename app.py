@@ -381,33 +381,19 @@ class App:
                     if protocol_data:
                         st.success("Data successfully fetched for the first two charts.")
                         
-                        # Display the line chart for historical borrowed data
-                        st.write("Historical Borrowed Assets:")
-                        st.plotly_chart(
-                            px.line(
-                                historical_df,
-                                x="Date",
-                                y="Tvl",
-                                title="Historical Borrowed Assets",
-                            ),
-                            use_container_width=True,
-                        )
+                    # Display the stacked bar chart for historical borrowed data
+                    st.write("Historical Borrowed Assets:")
+                    st.plotly_chart(
+                        px.bar(
+                            historical_df,
+                            x="Date",
+                            y=["Column1", "Column2", "Column3"],  # Replace with actual column names
+                            title="Historical Borrowed Assets",
+                            barmode='stack'
+                        ),
+                        use_container_width=True,
+                    )
 
-                        # Create a DataFrame from the protocol data for the bar chart
-                        protocol_df = pd.DataFrame(protocol_data)
-
-                        # Display the bar chart for current borrowed data
-                        st.write("Current Borrowed Assets by Chain:")
-                        st.plotly_chart(
-                            px.bar(
-                                protocol_df,
-                                x="Chain",
-                                y="Borrowed Assets",
-                                title="Current Borrowed Assets by Chain",
-                            ),
-                            use_container_width=True,
-                        )
-                    
                     # Fetch and display data for the TVL chart
                     multi_line_df = self.data_instance.fetchMultiLine1(lending_protocol)
                     st.write("Total Value Locked (TVL) Across Chains:")
