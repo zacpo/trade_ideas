@@ -115,7 +115,7 @@ class App:
 # Price Tab --------------------------------------------------------------------------------        
     def tabCryptoPrices(self):
         # List of cryptocurrencies for the dropdown
-        asset = ["Across Protocol - ACX", "Axelar - AXL", "ChainPort - PORTX", "Hop Protocol - HOP", "Injective - INJ", "Maya Protocol - CACAO", "Symbiosis - SIS", "Synapse - SYN", "Thorchain - RUNE"]
+        asset = ["Across Protocol - ACX", "Axelar - AXL", "Hop Protocol - HOP", "Injective - INJ", "Symbiosis - SIS", "Synapse - SYN", "Thorchain - RUNE"]
 
         # Dropdown to select a cryptocurrency
         selected_cryptocurrency = st.sidebar.selectbox("Select a Cryptocurrency", asset)
@@ -161,10 +161,6 @@ class App:
                     df.sort_values('timestamp', inplace=True)
                     df.set_index('timestamp', inplace=True)
 
-                    # Debug print
-                    #st.write("Processed Data:", df.head())
-                    # ... [previous code] ...
-
                     fig = go.Figure()
 
                     # Add bar trace for volume on the left y-axis
@@ -184,10 +180,6 @@ class App:
 
                     # Display the chart
                     st.plotly_chart(fig, use_container_width=True)
-
-                    # ... [CSV export code] ...
-
-                    # ... [rest of the method] ...
 
                     # CSV export
                     csv_df = df.reset_index()
