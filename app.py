@@ -44,71 +44,70 @@ class App:
         st.write("This is the home page for our research data app. We can include details on app upgrades, links to our published research reports, and ways of communicating with the team here. Some features of the app we may find beneficial include: 1) technical knowledge free ability to create unlimited CSV files with Dune Data (only costs API request credits), ability to create dashboards that can be used internally without having to share our Dune or related credentials with anyone or making our work on said platforms public, and 3) ability to visualize data from any number of sources side by side (cuts down on the constraints of fragmented data problem for non-technical folks).")
 
 # Price Tab --------------------------------------------------------------------------------        
-    def tabCryptoPrices(self):
-        # Define the list of cryptocurrencies for the dropdown
-        asset = ["Arbitrum - ARB", "Across Protocol - ACX", "Bitcoin - BTC", "Ethereum - ETH", "Optimism - OP", "Solana - SOL", "Polygon - MATIC", "Tether - USDT", "USD Coin - USDC", "Lido Staked ETH - stETH", "Cardano - ADA", "Chainlink - LINK", "Ripple - XRP", "Dogecoin - DOGE", "Tron - TRX", "Polkadot - DOT", "Wrapped Bitcoin - WBTC", "Litecoin - LTC", "Shiba Inu - SHIB", "Bitcoin Cash - BCH", "Avalanche - AVAX", "Uniswap Token - UNI", 'DAI Stablecoin - DAI', "Stellar - XLM", "True USD - TUSD", "OKX Token - OKB", "Monero - XMR", "Ethereum Classic - ETC", "Cosmos - ATOM", "Filecoin - FIL", "Hedera - HBAR", "Cronos - CRO", "Binance USD - BUSD", "Internet Computer - ICP", "Aptos - APT", "Lido DAO - LDO", "VeCahin - VET", "Near protocol - NEAR", "Quant - QNT", "Injective - INJ", "Aave - AAVE", "Kaspa - KAS", "The Graph - GRT", "Mantle - MNT", "MakerDAO - MKR", "RocketPool ETH - RETH", "Celestia - TIA"]
+    def CryptoPricesTab(self):
+        # List of cryptocurrencies for the dropdown
+        asset = ["Arbitrum - ARB", "Across Protocol - ACX", "Bitcoin - BTC", "Ethereum - ETH", "Optimism - OP", "Solana - SOL", "MakerDAO - MKR", "RocketPool ETH - RETH", "Celestia - TIA"]
+
+        # Dropdown to select a cryptocurrency
         selected_cryptocurrency = st.sidebar.selectbox("Select a Cryptocurrency", asset)
 
         # Extract the cryptocurrency code from the selection
         selected_cryptocurrency_code = selected_cryptocurrency.split(" - ")[1].lower()
 
-        # Display price-related settings
+        # Date input for start and end dates
         start_date = st.sidebar.date_input("Start Date", datetime(2023, 10, 1))
         end_date = st.sidebar.date_input("End Date", datetime(2023, 10, 31))
+
+        # Granularity selection
         granularity = st.sidebar.selectbox("Select Granularity", ["minute", "hour", "day"])
 
-        # Fetch data when the user clicks a button
+        # Button to fetch data
         if st.sidebar.button("Fetch Data"):
             with st.spinner("Fetching Data..."):
-                # Using the amberPrices method
+                # Fetch data using the amberPrices method
                 price_data = self.data_instance.amberPrices(
                     start_date.strftime("%Y-%m-%d"),
                     end_date.strftime("%Y-%m-%d"),
                     selected_cryptocurrency_code,
                     granularity
                 )
+
                 if not price_data:
                     st.error(f"An error occurred while retrieving data for {selected_cryptocurrency}.")
                 else:
-                    # Create DataFrames for price and volume
+                    # Create DataFrame from fetched data
                     df = pd.DataFrame(price_data)
 
-                    # Preprocess the timestamps to insert a decimal point before the milliseconds
-                    df['timestamp'] = df['timestamp'].str.replace(' ', '.', regex=False)
-
-                    # Convert the timestamp to datetime, with the correct format including milliseconds
+                    # Convert timestamp to datetime and sort
                     df['timestamp'] = pd.to_datetime(df['timestamp'], format='%Y-%m-%d.%H:%M:%S.%f', errors='coerce')
-
-                    # Continue with the rest of your existing code...
+                    df = df.drop_duplicates(subset='timestamp')
+                    df.sort_values('timestamp', inplace=True)
                     df.set_index('timestamp', inplace=True)
-                    df.sort_index(inplace=True)  # Ensure the data is sorted by timestamp
 
-                    # Create the figure with a primary y-axis for price and secondary y-axis for volume
+                    # Plotting
                     fig = go.Figure()
 
                     # Add price trace
-                    fig.add_trace(go.Scatter(x=df.index, y=df['price'], name='Volume (Native)', yaxis='y2', mode='lines'))
+                    fig.add_trace(go.Scatter(x=df.index, y=df['price'], name='Price ($)', mode='lines'))
 
-                    # Add volume trace on secondary y-axis
-                    fig.add_trace(go.Bar(x=df.index, y=df['volume'], name='Price ($)', yaxis='y1'))
+                    # Add volume trace
+                    fig.add_trace(go.Bar(x=df.index, y=df['volume'], name='Volume (Native)', yaxis='y2'))
 
-                    # Update layout with dual y-axes
+                    # Layout updates for dual y-axes
                     fig.update_layout(
                         title=f"{selected_cryptocurrency.split(' - ')[0]} Prices and Volume",
                         xaxis=dict(title='Date'),
-                        yaxis=dict(title='Volume (Native)', side='left', showgrid=False),
-                        yaxis2=dict(title='Price USD', side='right', overlaying='y', showgrid=False),
+                        yaxis=dict(title='Price ($)', side='left', showgrid=False),
+                        yaxis2=dict(title='Volume (Native)', side='right', overlaying='y', showgrid=False),
                         legend=dict(x=0.01, y=0.99, bordercolor="Black", borderwidth=1)
                     )
 
-                    # Plot the figure
+                    # Display the chart
                     st.plotly_chart(fig, use_container_width=True)
 
-                    # Create a DataFrame for CSV export with the original unsorted data
-                    csv_df = pd.DataFrame(price_data)
+                    # CSV export
+                    csv_df = df.reset_index()
                     csv_df.rename(columns={'timestamp': 'Date', 'price': 'Price USD', 'volume': 'Volume'}, inplace=True)
-
-                    # Add a "Download CSV" button
                     csv_data = csv_df.to_csv(index=False)
                     st.download_button(
                         label="Download CSV",
@@ -123,7 +122,8 @@ class App:
         st.sidebar.markdown(
             'Data: [AmberData](https://www.amberdata.io/)',
             unsafe_allow_html=True
-            )
+        )
+
 
 # Network Tab --------------------------------------------------------------------------------
     def tabSpecificNetwork(self):
