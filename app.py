@@ -80,11 +80,14 @@ class App:
                     # Create DataFrame from fetched data
                     df = pd.DataFrame(price_data)
 
-                    # Debug print
-                    st.write("Raw Data:", df.head())
+                    # Remove milliseconds and convert timestamp to datetime
+                    df['timestamp'] = pd.to_datetime(df['timestamp'].str.split(' ').str[0], format='%Y-%m-%d', errors='coerce')
 
-                    # Convert timestamp to datetime and sort
-                    df['timestamp'] = pd.to_datetime(df['timestamp'], format='%Y-%m-%d.%H:%M:%S.%f', errors='coerce')
+                    # Convert 'price' and 'volume' to numeric values
+                    df['price'] = pd.to_numeric(df['price'].str.replace(',', ''), errors='coerce')
+                    df['volume'] = pd.to_numeric(df['volume'].str.replace(',', ''), errors='coerce')
+
+                    # Remove duplicates and sort by timestamp
                     df = df.drop_duplicates(subset='timestamp')
                     df.sort_values('timestamp', inplace=True)
                     df.set_index('timestamp', inplace=True)
@@ -95,7 +98,7 @@ class App:
                     fig = go.Figure()
                     fig.add_trace(go.Scatter(x=df.index, y=df['price'], name='Price ($)', mode='lines'))
 
-                    # Layout updates (no need for dual y-axes as volume is not plotted)
+                    # Layout updates
                     fig.update_layout(
                         title=f"{selected_cryptocurrency.split(' - ')[0]} Prices",
                         xaxis=dict(title='Date'),
@@ -109,6 +112,7 @@ class App:
                     # ... [CSV export code] ...
 
                 # ... [rest of the method] ...
+
 
 
 
