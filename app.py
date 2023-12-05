@@ -49,7 +49,7 @@ class App:
         - Platforms that bridge to Bitcoin have overperformed (e.g. Maya Protocol and Thorchain)
         - Charts for all look great. Most have recently retested and beginning to test and break above key MAs. (SYN, INJ, CACAO, HOP look great from this perspective)
             
-        Stand Out Tokens:
+        ## Stand Out Tokens:
             
         - [**Across Protocol - ACX**](https://defillama.com/protocol/across)**
             - [*$157.2m FDV*](https://www.coingecko.com/en/coins/across-protocol)
