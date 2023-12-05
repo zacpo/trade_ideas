@@ -45,7 +45,7 @@ class App:
         markdown_text = """
         **Logic and Observations**
         - Bridge tokens have been among the best performing assets this run (e.g. RUNE has been one of the leading tokens/ indicators of upward moves market wide).
-        - Facilitating the repositioning of funds across chains as the PVP faceoff between narratives and new market trends have unfolded (e.g. Bitcoin for Ordinals, Solana for airdrops, etc.).
+        - Facilitating the repositioning of funds across chains as the PVP faceoff between narratives and new market trends fighting for somewhat limited liquidity have unfolded (e.g. Bitcoin for Ordinals, Solana for airdrops, etc.).
         - Platforms that bridge to Bitcoin have overperformed (e.g. Maya Protocol and Thorchain). Ordinals movement is bringing new players to Bitcoin from other chains and there aren't many ways to get to Bitcoin.
         - Charts for all look great. Most have recently retested and beginning to test and break above key MAs. (SYN, INJ, CACAO, HOP look great from this perspective)
             
