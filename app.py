@@ -44,12 +44,13 @@ class App:
         st.markdown("## Trade Idea: Bridge Tokens")
         markdown_text = """
         **Logic and Observations**
-        - Bridge tokens have been among the best performing assets this run.
-        - Facilitating the repositioning of funds across chains as the PVP faceoff between narratives has unfolded.
-        - Platforms that bridge to Bitcoin have overperformed (e.g. Maya Protocol and Thorchain)
+        - Bridge tokens have been among the best performing assets this run (e.g. RUNE has been one of the leading tokens/ indicators of upward moves market wide).
+        - Facilitating the repositioning of funds across chains as the PVP faceoff between narratives and new market trends have unfolded (e.g. Bitcoin for Ordinals, Solana for airdrops, etc.).
+        - Platforms that bridge to Bitcoin have overperformed (e.g. Maya Protocol and Thorchain). Ordinals movement is bringing new players to Bitcoin from other chains and there aren't many ways to get to Bitcoin.
         - Charts for all look great. Most have recently retested and beginning to test and break above key MAs. (SYN, INJ, CACAO, HOP look great from this perspective)
             
         ## Stand Out Tokens:
+            *Alphabetical Order*
             
         - [**Across Protocol - ACX**](https://defillama.com/protocol/across)**
             - [*$157.2m FDV*](https://www.coingecko.com/en/coins/across-protocol)
@@ -102,13 +103,19 @@ class App:
             - $5.1m TVL
             - 11.92 Mcap / TVL Ratio
             - Super volatile recently. Shilled by big CT accounts.
+            
+        ## Notes
+        - Maya Protocol recently launched and is a Thorchain fork. Watch for it to follow RUNE and keep an eye out for other Thorchain forks that may pop up.
+        - Watch bridges for L2s/ EVM chains, Bitcoin, and Solana. People have been moving an [outsized amount of value bto Solana](https://twitter.com/Uptodatenow/status/1729618239905239177) and [Bitcoin liquidity on Thorchain](https://app.thorswap.finance/dashboard) has been mooning.
+        - Also watch for watch for a reversal in the current trend of flows into Solana and Bitcoin, this can bring about opportunities around different bridge tokens and within each chain's ecosystem broadly.
+        - [Injective Integration w/ Google Cloud](https://medium.com/@bitcoape/injective-and-google-cloud-massive-integration-b2da0f2de199#:~:text=In%20a%20groundbreaking%20move%2C%20Injective,and%20the%20wider%20mainstream%20audience)
         """
         st.markdown(markdown_text)
 
 # Price Tab --------------------------------------------------------------------------------        
     def tabCryptoPrices(self):
         # List of cryptocurrencies for the dropdown
-        asset = ["Across Protocol - ACX", "AllBridge - ABR", "Axelar - AXL", "ChainPort - PORTX", "Hop Protocol - HOP", "Injective - INJ", "Maya Protocol - CACAO", "Symbiosis - SIS", "Synapse - SYN", "Thorchain - RUNE"]
+        asset = ["Across Protocol - ACX", "Axelar - AXL", "ChainPort - PORTX", "Hop Protocol - HOP", "Injective - INJ", "Maya Protocol - CACAO", "Symbiosis - SIS", "Synapse - SYN", "Thorchain - RUNE"]
 
         # Dropdown to select a cryptocurrency
         selected_cryptocurrency = st.sidebar.selectbox("Select a Cryptocurrency", asset)
