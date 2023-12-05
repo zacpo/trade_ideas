@@ -411,24 +411,6 @@ class App:
                     # Fetch data for the third chart using fetchMultiLine1
                     multi_line_df = self.data_instance.fetchMultiLine1(lending_protocol)
                     st.write("Total Value Locked (TVL) Across Chains:")
-                    
-                    # Let the user choose the type of chart
-                    chart_type = st.radio(
-                        "Choose chart type:",
-                        ('Line Chart', 'Stacked Bar Chart')
-                    )
-
-                    if chart_type == 'Line Chart':
-                        fig = px.line(
-                            multi_line_df,
-                            title="Total Value Locked (TVL) Across Chains"
-                        )
-                    else:  # Stacked Bar Chart
-                        fig = px.bar(
-                            multi_line_df,
-                            title="Total Value Locked (TVL) Across Chains",
-                            barmode='stack'
-                        )
 
                     st.plotly_chart(fig, use_container_width=True)
 
