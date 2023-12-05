@@ -50,7 +50,7 @@ class App:
         - [**Axelar - AXL**](https://defillama.com/protocol/axelar): [*$718.3m FDV*](https://www.coingecko.com/en/coins/axelar)
         - [**ChainPort - PORTX**](https://defillama.com/protocol/chainport): [*$17.9m FDV*](https://www.coingecko.com/en/coins/chainport)
         - [**Hop Protocol - HOP**](https://defillama.com/protocol/hop-protocol): [*$60.5m FDV*](https://www.coingecko.com/en/coins/hop-protocol)
-        - [**Injective - INJ**](https://defillama.com/protocol/injective-bridge): [*$1.59b FDV*](https://www.coingecko.com/en/coins/injective) and $13.6m TVL
+        - [**Injective - INJ**](https://defillama.com/protocol/injective-bridge): [*$1.59b FDV*](https://www.coingecko.com/en/coins/injective)  and $13.6m TVL
         - [**Maya Protocol - CACAO**](https://defillama.com/protocol/maya-protocol): [*$92.68m*](https://www.coingecko.com/en/coins/maya-protocol) + $58.94M tvl
         - [**Symbiosis - SIS**](https://defillama.com/protocol/symbiosis): [*$42.15m*](https://www.coingecko.com/en/coins/symbiosis) + $3.96m TVL
         - [**Synapse - SYN**](https://defillama.com/protocol/synapse): [*$87.1m*](https://www.coingecko.com/en/coins/synapse) + $102.89m TVL
