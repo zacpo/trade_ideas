@@ -408,7 +408,7 @@ class App:
                         )
                         st.plotly_chart(historical_tvl_fig, use_container_width=True)
                     else:
-                        st.error("No historical TVL data available.")
+                        st.error("No bridge volume data available.")
 
                 except Exception as e:
                     st.error(f"Failed to fetch data: {e}")

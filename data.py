@@ -352,7 +352,6 @@ class Data:
         protocol_id = BRIDGE_MAPPING.get(lending_protocol.lower())
 
         if protocol_id is None:
-            st.error(f"Invalid lending protocol: {lending_protocol}")
             return None
 
         url = f"https://bridges.llama.fi/bridgevolume/all?id={protocol_id}"
