@@ -362,4 +362,4 @@ class App:
             unsafe_allow_html=True
         )
 # Trigger App
-    App()
+App()
