@@ -44,7 +44,7 @@ class App:
         st.write("This is the home page for our research data app. We can include details on app upgrades, links to our published research reports, and ways of communicating with the team here. Some features of the app we may find beneficial include: 1) technical knowledge free ability to create unlimited CSV files with Dune Data (only costs API request credits), ability to create dashboards that can be used internally without having to share our Dune or related credentials with anyone or making our work on said platforms public, and 3) ability to visualize data from any number of sources side by side (cuts down on the constraints of fragmented data problem for non-technical folks).")
 
 # Price Tab --------------------------------------------------------------------------------        
-    def CryptoPricesTab(self):
+    def tabCryptoPrices(self):
         # List of cryptocurrencies for the dropdown
         asset = ["Arbitrum - ARB", "Across Protocol - ACX", "Bitcoin - BTC", "Ethereum - ETH", "Optimism - OP", "Solana - SOL", "MakerDAO - MKR", "RocketPool ETH - RETH", "Celestia - TIA"]
 
