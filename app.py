@@ -412,7 +412,7 @@ class App:
                     multi_line_df = self.data_instance.fetchMultiLine1(lending_protocol)
                     st.write("Total Value Locked (TVL) Across Chains:")
 
-                    st.plotly_chart(fig, use_container_width=True)
+                    st.plotly_chart(use_container_width=True)
 
                     # Fetch data for the historical TVL chart
                     historical_tvl_df = self.data_instance.historicalChainTvl(lending_protocol)
