@@ -46,7 +46,7 @@ class App:
 # Price Tab --------------------------------------------------------------------------------        
     def tabCryptoPrices(self):
         # List of cryptocurrencies for the dropdown
-        asset = ["Arbitrum - ARB", "Across Protocol - ACX", "Bitcoin - BTC", "Ethereum - ETH", "Optimism - OP", "Solana - SOL", "MakerDAO - MKR", "RocketPool ETH - RETH", "Celestia - TIA"]
+        asset = ["Across Protocol - ACX", "AllBridge - ABR", "Axelar - AXL", "ChainPort - PORTX", "Hop Protocol - HOP", "Injective - INJ", "Maya Protocol - CACAO", "Symbiosis - SIS", "Synapse - SYN", "Thorchain - RUNE"]
 
         # Dropdown to select a cryptocurrency
         selected_cryptocurrency = st.sidebar.selectbox("Select a Cryptocurrency", asset)
@@ -71,8 +71,6 @@ class App:
                     selected_cryptocurrency_code,
                     granularity
                 )
-
-                # ... [earlier part of the method] ...
 
                 if not price_data:
                     st.error(f"An error occurred while retrieving data for {selected_cryptocurrency}.")
