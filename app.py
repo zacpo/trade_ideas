@@ -56,6 +56,8 @@ class App:
             - [*$157.2m FDV*](https://www.coingecko.com/en/coins/across-protocol)
             - $104.63m TVL
             - 1.5 Mcap / TVL Ratio
+            - [Fees and Revenue](https://tokenterminal.com/terminal/projects/across) - Fees are grinding higher
+            - 
             
         - [**Axelar - AXL**](https://defillama.com/protocol/axelar):
             -  [*$718.3m FDV*](https://www.coingecko.com/en/coins/axelar)
@@ -67,10 +69,11 @@ class App:
             - $17.95m TVL
             - 0.997 Mcap / TVL Ratio
             
-        - [**Hop Protocol - HOP**](https://defillama.com/protocol/hop-protocol)
+        - [**Hop Protocol - HOP**](https://defillama.com/protocol/hop-protocol)**
             - [*$60.5m FDV*](https://www.coingecko.com/en/coins/hop-protocol)
             - $60.41m TVL
             - 1 Mcap / TVL Ratio
+            - [Fees and Revenue](https://tokenterminal.com/terminal/projects/hop-protocol) - Fees and revenue grinding higher
             
         - [**Injective - INJ**](https://defillama.com/protocol/injective-bridge)
             - [*$1.59b FDV*](https://www.coingecko.com/en/coins/injective)
@@ -91,6 +94,7 @@ class App:
             - [*$87.1m*](https://www.coingecko.com/en/coins/synapse)
             - $102.89m TVL
             - 0.85 Mcap / TVL Ratio
+            - [Fees and Revenue](https://tokenterminal.com/terminal/projects/synapse) - Fees and revenue picking up
             
         - [**Thorchain - RUNE**](https://defillama.com/protocol/thorchain)
             - [*$3.19b FDV](https://www.coingecko.com/en/coins/thorchain)
