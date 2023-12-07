@@ -370,9 +370,9 @@ class App:
 # Category Tab --------------------------------------------------------------------------------
     def tabLendingData(self):
         # Dropdown for selecting a lending protocol
-        lending_protocols = ["AllBridge", "Symbiosis", "Synapse", "Hop", "Thorchain"]
+        lending_protocols = ["AllBridge", "Symbiosis", "Synapse", "Thorchain"]
         lending_protocol = st.sidebar.selectbox(
-            "Select a lending protocol:", lending_protocols
+            "Select a bridge:", lending_protocols
         ).lower()
 
         st.sidebar.header("Lending Protocol Data")
